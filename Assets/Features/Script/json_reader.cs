@@ -31,7 +31,7 @@ public class json_reader : MonoBehaviour
             return;
         }
 
-        
+        // Deserialize JSON into JsonData object
          terrainGrid = JsonConvert.DeserializeObject<JsonData>(jsonFile.text);
 
         if (terrainGrid == null || terrainGrid.TerrainGrid == null)
@@ -40,10 +40,26 @@ public class json_reader : MonoBehaviour
             return;
         }
 
-        
-          _rowCount = terrainGrid.TerrainGrid.Length;
-          _columnCount = terrainGrid.TerrainGrid[0].Length;
+        // Access your terrain data
+        _rowCount = terrainGrid.TerrainGrid.Length;
+        _columnCount = terrainGrid.TerrainGrid[0].Length;
+
+        Debug.Log("Rows: " + _rowCount + ", Columns: " + _columnCount);
+
+        // Print and save the tile type of each block
+        for (int i = 0; i < _rowCount; i++)
+        {
+            for (int j = 0; j < _columnCount; j++)
+            {
+                int tileType = terrainGrid.TerrainGrid[i][j].TileType;
+                Debug.Log("Tile Type at (" + i + ", " + j + "): " + tileType);
+            }
+        }
+
+
         
     }
+
+
 
 }
