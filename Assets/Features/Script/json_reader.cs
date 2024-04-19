@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using System;
 
 public class JsonData
 {
@@ -17,12 +18,18 @@ public class TileProperty
 
 public class json_reader : MonoBehaviour
 {
-    float _rowCount, _columnCount;
+    public FieldsContainer FieldsContainerObject;
+    public static Action<JsonData> JsonDataContainer;
     JsonData  terrainGrid;
- 
+   
     void Start()
     {
 
+        JsonReader();
+    }
+
+    void JsonReader()
+    {
         TextAsset jsonFile = Resources.Load<TextAsset>("GridData");
 
         if (jsonFile == null)
@@ -31,34 +38,24 @@ public class json_reader : MonoBehaviour
             return;
         }
 
-        // Deserialize JSON into JsonData object
-         terrainGrid = JsonConvert.DeserializeObject<JsonData>(jsonFile.text);
+        terrainGrid = JsonConvert.DeserializeObject<JsonData>(jsonFile.text);
 
         if (terrainGrid == null || terrainGrid.TerrainGrid == null)
         {
-            Debug.LogError("Failed to parse JSON data.");
             return;
         }
 
-        // Access your terrain data
-        _rowCount = terrainGrid.TerrainGrid.Length;
-        _columnCount = terrainGrid.TerrainGrid[0].Length;
+        FieldsContainerObject.TotalRowCount = terrainGrid.TerrainGrid.Length;
+        FieldsContainerObject.TotalColumnCount = terrainGrid.TerrainGrid[0].Length;
 
-        Debug.Log("Rows: " + _rowCount + ", Columns: " + _columnCount);
+        JsonDataContainer?.Invoke(terrainGrid);
+    }
 
-        // Print and save the tile type of each block
-        for (int i = 0; i < _rowCount; i++)
-        {
-            for (int j = 0; j < _columnCount; j++)
-            {
-                int tileType = terrainGrid.TerrainGrid[i][j].TileType;
-                Debug.Log("Tile Type at (" + i + ", " + j + "): " + tileType);
-            }
-        }
+
+       
 
 
         
-    }
 
 
 
