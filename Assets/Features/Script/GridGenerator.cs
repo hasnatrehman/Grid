@@ -5,26 +5,18 @@ using UnityEngine;
 public class GridGenerator : MonoBehaviour
 {
     public FieldsContainer FieldsContainerObject;
-    public GridTile SingleTileObject;
-   
+    GridTile[,] grid;
 
-    private void Start()
-    {
-        if(SingleTileObject == null)
-        {
-            
-        }
-    }
     void generateGrid(JsonData jsonData)
     {
-        FieldsContainerObject.Grid = new GridTile[FieldsContainerObject.TotalRowCount, FieldsContainerObject.TotalColumnCount];
+        grid = new GridTile[FieldsContainerObject.TotalRowCount, FieldsContainerObject.TotalColumnCount];
 
         for (int i = 0; i < FieldsContainerObject.TotalRowCount; i++)
         {
             for (int j = 0; j < FieldsContainerObject.TotalColumnCount; j++)
             {
-                GridTile tile = Instantiate(SingleTileObject, new Vector2(i, j), Quaternion.identity);
-                FieldsContainerObject.Grid[i, j] = tile;
+                GridTile tile = Instantiate(FieldsContainerObject.SingleTileObject, new Vector2(i, j), Quaternion.identity);
+                grid[i, j] = tile;
                
                 tile.SpriteRendererReference.sprite = FieldsContainerObject.GridTiles[jsonData.TerrainGrid[i][j].TileType];
                 tile.TileType = jsonData.TerrainGrid[i][j].TileType;
