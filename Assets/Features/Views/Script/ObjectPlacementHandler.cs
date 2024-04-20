@@ -89,7 +89,7 @@ public class ObjectPlacementHandler : MonoBehaviour
         else
         {
             Debug.Log("Nasso No Space Here");
-
+            return;
         }
         if (!ResetButton.activeInHierarchy)
         {
@@ -117,6 +117,7 @@ public class ObjectPlacementHandler : MonoBehaviour
         }
                
         Destroy(_tableContainer);
+        ResetButton.SetActive(false);
         GenerateTablesContainer();
     }
 

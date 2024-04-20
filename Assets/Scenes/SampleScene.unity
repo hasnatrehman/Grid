@@ -354,7 +354,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 4.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -378,13 +378,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924290226}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.40913406, y: 0.1451239, z: -0.26184335, w: 0.86196667}
+  m_LocalRotation: {x: -0.48142973, y: 0.106286325, z: -0.2947754, w: 0.8185574}
   m_LocalPosition: {x: 8, y: 8.18, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -39, y: 36.7, z: -47.193}
+  m_LocalEulerAnglesHint: {x: -46.51, y: 41.7, z: -58.2}
 --- !u!1 &1105650638
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b40c4c21be143445b1e5faab864da50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResetButton: {fileID: 1372063986}
+  ResetButton: {fileID: 1372063984}
   FieldsContainerObject: {fileID: 11400000, guid: e5696e9b2223698429748b03e8e6cd3c, type: 2}
   VerticleTable: {fileID: 1506661283599864517, guid: e048cf602c3d46e439e65f8ebe6035a5, type: 3}
   HorizontalTable: {fileID: 3178978803232081442, guid: 748a999853bc69543b0257bd2006f72b, type: 3}

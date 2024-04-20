@@ -26,7 +26,7 @@ public class JsonReader : MonoBehaviour
 
     void JsonReaderMeathod()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("GridData");
+        TextAsset jsonFile = Resources.Load<TextAsset>("Grid Data/GridData");
 
         if (jsonFile == null)
         {
