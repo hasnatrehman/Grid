@@ -6,17 +6,10 @@ public class GridGenerator : MonoBehaviour
 {
     public FieldsContainer FieldsContainerObject;
     public GridTile SingleTileObject;
-   
-
-    private void Start()
+  
+    void GenerateGrid(JsonData jsonData)
     {
-        if(SingleTileObject == null)
-        {
-            
-        }
-    }
-    void generateGrid(JsonData jsonData)
-    {
+        FieldsContainerObject.Grid = null;
         FieldsContainerObject.Grid = new GridTile[FieldsContainerObject.TotalRowCount, FieldsContainerObject.TotalColumnCount];
 
         for (int i = 0; i < FieldsContainerObject.TotalRowCount; i++)
@@ -33,14 +26,13 @@ public class GridGenerator : MonoBehaviour
         }
     }
 
-
     private void OnEnable()
     {
-        json_reader.JsonDataContainer += generateGrid;
+        JsonReader.JsonDataContainer += GenerateGrid;
     }
     private void OnDisable()
     {
-        json_reader.JsonDataContainer -= generateGrid;
+        JsonReader.JsonDataContainer -= GenerateGrid;
         
     }
 }
