@@ -10,5 +10,5 @@ public class FieldsContainer : ScriptableObject
     
     public Sprite[] GridTiles;
 
-    public GridTile SingleTileObject;
+    public GridTile[,] Grid;
 }
